@@ -1,0 +1,2 @@
+class VaccsController < ApplicationController
+end
