@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501210255) do
+ActiveRecord::Schema.define(version: 20180501210526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "vaccinations", force: :cascade do |t|
+    t.string "title"
+    t.text "received"
+    t.text "expiration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "vaccs", force: :cascade do |t|
     t.string "title"
