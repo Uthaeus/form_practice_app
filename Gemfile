@@ -51,3 +51,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.1.0'
 gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1'
+gem 'cocoon', '~> 1.2', '>= 1.2.11'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
