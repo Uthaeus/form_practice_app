@@ -15,6 +15,7 @@ class VaccinationsController < ApplicationController
   # GET /vaccinations/new
   def new
     @vaccination = Vaccination.new
+    @vaccs = Vacc.all 
   end
 
   # GET /vaccinations/1/edit
@@ -25,6 +26,7 @@ class VaccinationsController < ApplicationController
   # POST /vaccinations.json
   def create
     @vaccination = Vaccination.new(vaccination_params)
+    @vaccination.user_id = current_user.id
 
     respond_to do |format|
       if @vaccination.save

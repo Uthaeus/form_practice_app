@@ -11,20 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.select :vacc_id, options_from_collection_for_select(Vacc.order(:title).all, "id", "title", params[:vacc_id]) %>
-  </div>
+  <% @vaccs.count.times do %>
 
-  <div class="field">
-    <%= form.label :received %>
-    <%= form.text_area :received, id: :vaccination_received %>
-  </div>
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.select :vacc_id, options_from_collection_for_select(Vacc.order(:title).all, "id", "title", params[:vacc_id]) %>
+    </div>
 
-  <div class="field">
-    <%= form.label :expiration %>
-    <%= form.text_area :expiration, id: :vaccination_expiration %>
-  </div>
+    <div class="field">
+      <%= form.label :received %>
+      <%= form.text_area :received, id: :vaccination_received %>
+    </div>
+
+    <div class="field">
+      <%= form.label :expiration %>
+      <%= form.text_area :expiration, id: :vaccination_expiration %>
+    </div>
+
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
