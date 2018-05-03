@@ -13,7 +13,7 @@ class VaccsController < ApplicationController
 
     respond_to do |format|
       if @vacc.save
-        format.html { redirect_to @vacc, notice: 'Successfully created' }
+        format.html { redirect_to vaccs_path, notice: 'Successfully created' }
       else
         format.html { render :new }
       end

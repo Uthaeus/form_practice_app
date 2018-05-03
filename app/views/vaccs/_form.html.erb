@@ -1,4 +1,4 @@
-<%= form_with(model: vacc, local: true) do |form| %>
+<%= form_with(model: vacc, local: true) do |f| %>
   <% if vacc.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(vaccination.errors.count, "error") %> prohibited this vaccination from being saved:</h2>
@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :vacc_title %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, id: :vacc_title %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
