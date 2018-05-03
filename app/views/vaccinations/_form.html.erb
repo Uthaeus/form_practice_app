@@ -15,7 +15,7 @@
 
     <div class="field">
       <%= form.label :title %>
-      <%= form.select :vacc_id, options_from_collection_for_select(Vacc.order(:title).all, "id", "title", params[:vacc_id]) %>
+      <%= collection_select(:vaccination, :vacc_id, Vacc.all, :id, :title, {}, { :multiple => false }) %>
     </div>
 
     <div class="field">
@@ -37,3 +37,5 @@
 
 <!-- :title, id: :vaccination_title
  -->
+
+ 
