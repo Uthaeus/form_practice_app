@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180625010534) do
+ActiveRecord::Schema.define(version: 20180625210009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,13 +53,13 @@ ActiveRecord::Schema.define(version: 20180625010534) do
 
   create_table "write_ins", force: :cascade do |t|
     t.string "title"
-    t.bigint "vaccinations_id"
+    t.bigint "vaccination_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["vaccinations_id"], name: "index_write_ins_on_vaccinations_id"
+    t.index ["vaccination_id"], name: "index_write_ins_on_vaccination_id"
   end
 
   add_foreign_key "vaccinations", "users"
   add_foreign_key "vaccinations", "vaccs"
-  add_foreign_key "write_ins", "vaccinations", column: "vaccinations_id"
+  add_foreign_key "write_ins", "vaccinations"
 end

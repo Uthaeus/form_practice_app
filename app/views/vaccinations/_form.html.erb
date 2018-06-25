@@ -19,7 +19,7 @@
 
           <div class="form-group">
             <%= f.label :title %>
-            <%= collection_select(:vaccination, :title, Vacc.all, :title, :title, {}, { :multiple => false }) %>
+            <%= collection_select(:vaccination, :title, Vacc.all, :title, :title, {:prompt => 'Select...'}, { :multiple => false }) %>
           </div>
 
           <div class="form-group">
