@@ -1,39 +1,57 @@
-<%= form_with(model: vaccination, local: true) do |form| %>
-  <% if vaccination.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(vaccination.errors.count, "error") %> prohibited this vaccination from being saved:</h2>
 
-      <ul>
-      <% vaccination.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="container">
+  <%= form_with(model: vaccination, local: true) do |f| %>
+    <% if vaccination.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(vaccination.errors.count, "error") %> prohibited this vaccination from being saved:</h2>
+
+        <ul>
+        <% vaccination.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-8">
+        <% @vaccs.count.times do %>
+
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= collection_select(:vaccination, :title, Vacc.all, :title, :title, {}, { :multiple => false }) %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :received %>
+            <%= f.date_field :received, id: :vaccination_received, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :expiration %>
+            <%= f.date_field :expiration, id: :vaccination_expiration, class: 'form-control' %>
+          </div>
+            
+        <% end %>
+      </div>
+    </div>
+
+    <div class="nested">
+      <div>
+        <%= f.fields_for :write_ins do |w_field| %>
+          <%= render 'write_in_fields', f: w_field %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to_add_association 'Write In Field', f, :write_ins, class: 'btn btn-outline-info' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit 'Save Form', class: 'btn btn-outline-primary' %>
     </div>
   <% end %>
-
-  <% @vaccs.count.times do %>
-
-    <div class="field">
-      <%= form.label :title %>
-      <%= collection_select(:vaccination, :vacc_id, Vacc.all, :id, :title, {}, { :multiple => false }) %>
-    </div>
-
-    <div class="field">
-      <%= form.label :received %>
-      <%= form.text_area :received, id: :vaccination_received %>
-    </div>
-
-    <div class="field">
-      <%= form.label :expiration %>
-      <%= form.text_area :expiration, id: :vaccination_expiration %>
-    </div>
-
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
 
 <!-- :title, id: :vaccination_title
  -->
